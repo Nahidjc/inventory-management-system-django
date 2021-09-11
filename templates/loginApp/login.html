@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load widget_tweaks %}
+{% load static %}
 
 <head>
     <meta charset="UTF-8">
@@ -26,17 +28,29 @@
         <div class="row vh-100">
             <div class="col-md-5 col-sm-6 col-lg-4 m-auto shadow-lg p-5 rounded-5">
                 <h2 class='text-center p-2'>Admin Login Form</h2>
-                <form method="POST">
+                <form method="POST" class="my-5">
+                    {% if error %}
+                    <div class="my-2">
+                        <div class="row">
+                            <div class="m-auto col">
+                                <div class="text-center alert alert-danger" role="alert">
+                                    {{error}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
                     <!-- Email input -->
                     {% csrf_token %}
                     <div class="form-outline mb-4">
-                        <input type="text" class="form-control" />
+
+                        {% render_field form.username|attr:'required:true' type='text' class="form-control" %}
                         <label class="form-label">Username</label>
                     </div>
 
                     <!-- Password input -->
                     <div class="form-outline mb-4">
-                        <input type="password" class="form-control" />
+                        {% render_field form.password|attr:'required:true' type="password" class="form-control" %}
                         <label class="form-label">Password</label>
                     </div>
 
