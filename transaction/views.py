@@ -11,7 +11,19 @@ def itemPurchase(request):
         form = PurchaseItemForm(request.POST)
         if form.is_valid():
             form.save()
-            # inv = inventory()
+            inventoryID = request.POST.get('inventoryName')
+            quantity = request.POST.get('quantity')
+            # previous_units updated inventory
+            inv_obj = inventory.objects.get(
+                id=inventoryID)
+
+            PreviousUnits = inv_obj.units
+
+            updatedUnits = int(PreviousUnits) + int(quantity)
+            print("Updated quantity", updatedUnits)
+            # # updated_inventory
+            inventory.objects.filter(
+                id=inventoryID).update(units=updatedUnits)
             return redirect('home')
 
     return render(request, 'transaction/purchase.html', context={'form': form})
