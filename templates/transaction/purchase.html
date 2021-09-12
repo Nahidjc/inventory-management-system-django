@@ -24,19 +24,22 @@
                 </div>
 
 
-                <div class="mb-4 form-outline">
+                <div class="mb-4 input-group">
+                    <div class="input-group-text">Per Item Price</div>
                     {% render_field form.itemPrice|attr:'required:true' id="itemPrice" class="form-control" %}
-                    <label class="form-label">Per Item Price</label>
+                    <!-- <label class="form-label">Per Item Price</label> -->
                 </div>
 
-                <div class="mb-4 form-outline">
+                <div class="mb-4 input-group">
+                    <div class="input-group-text">Item Quantity</div>
                     {% render_field form.quantity|attr:'required:true' id="quantity" class="form-control" %}
-                    <label class="form-label">Item Quantity</label>
+                    <!-- <label class="form-label">Item Quantity</label> -->
                 </div>
 
-                <div class="mb-4 form-outline">
+                <div class="mb-4 input-group">
+                    <div class="input-group-text">Total Price</div>
                     {% render_field form.totalPrice|attr:'readonly:true' id="totalPrice" class="form-control" %}
-                    <label class="form-label">Total Price</label>
+                    <!-- <label class="form-label">Total Price</label> -->
                 </div>
                 <!-- Submit button -->
                 <button type="submit" class="btn btn-primary btn-block">Add to Purchase</button>

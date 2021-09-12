@@ -14,4 +14,4 @@ class PurchaseItem(models.Model):
     totalPrice = models.IntegerField(default=1)
 
     def __str__(self):
-        return self.inventoryName + ' ' + self.quantity
+        return self.inventoryName.name
