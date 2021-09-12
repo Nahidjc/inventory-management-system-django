@@ -1,0 +1,51 @@
+{% extends "dashboard.html" %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block body_block %}
+
+<div class="container">
+    <div class="row vh-100">
+        <div class="p-5 m-auto shadow-lg text-dark col-md-7 col-sm-8 col-lg-6 rounded-5">
+            <h2 class='p-2 text-center'>Purchase Item</h2>
+            <form method="POST" class="my-5">
+
+                {% csrf_token %}
+
+                <div class="mb-4 input-group">
+                    <div class="input-group-text">Supplier</div>
+                    {% render_field form.supplier|attr:'required:true' class="form-control" %}
+                </div>
+
+
+                <div class="mb-4 input-group">
+                    <div class="input-group-text">Quantity</div>
+                    {% render_field form.inventoryName|attr:'required:true' class="form-control" %}
+                </div>
+
+
+                <div class="mb-4 form-outline">
+                    {% render_field form.itemPrice|attr:'required:true' id="itemPrice" class="form-control" %}
+                    <label class="form-label">Per Item Price</label>
+                </div>
+
+                <div class="mb-4 form-outline">
+                    {% render_field form.quantity|attr:'required:true' id="quantity" class="form-control" %}
+                    <label class="form-label">Item Quantity</label>
+                </div>
+
+                <div class="mb-4 form-outline">
+                    {% render_field form.totalPrice|attr:'readonly:true' id="totalPrice" class="form-control" %}
+                    <label class="form-label">Total Price</label>
+                </div>
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-block">Add to Purchase</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script src="{% static 'js/purchase.js' %}"></script>
+
+{% endblock %}
