@@ -50,4 +50,4 @@ def salesItem(request):
                 id=inventoryID).update(units=updatedUnits)
             return redirect('home')
 
-    return render(request, 'salesItem.html', context={'form': form})
+    return render(request, 'transaction/salesItem.html', context={'form': form})

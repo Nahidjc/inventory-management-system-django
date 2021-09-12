@@ -1,0 +1,131 @@
+{% extends "dashboard.html" %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block css_block %}
+
+<style>
+    input,
+    select,
+    textarea {
+        color: #ff0000;
+    }
+
+    textarea:focus,
+    input:focus {
+        color: #080808 !important;
+    }
+</style>
+
+{% endblock %}
+
+{% block body_block %}
+
+<div class="conatiner">
+    <div class="row vh-100 bg-dark">
+        <div class="p-5 m-auto shadow-lg bg-light text-dark col-md-8 col-sm-10 col-lg-7 rounded-5">
+            <h1 class="my-4 text-center text-primary">Sale Items</h1>
+            <hr>
+            <form method="POST">
+                {% csrf_token %}
+                <!-- 2 column grid layout with text inputs for the first and last names -->
+                <h3>Customer Details</h3>
+                <hr>
+                <div class="mb-4 row">
+                    <div class="col">
+                        <div class="form-outline">
+                            {% render_field form.customer|attr:'required:true' class="form-control" %}
+                            <label class="form-label" for="form6Example1">Customer name</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-outline">
+                            {% render_field form.phone|attr:'required:true' class="form-control" %}
+                            <label class="form-label">Phone</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text input -->
+                <div class="mb-4 form-outline">
+                    {% render_field form.email|attr:'required:true' class="form-control" %}
+                    <label class="form-label" for="form6Example3">Email</label>
+                </div>
+
+                <!-- Text input -->
+                <div class="mb-4 form-outline">
+                    {% render_field form.address|attr:'required:true' class="form-control" %}
+                    <label class="form-label" for="form6Example4">Address</label>
+                </div>
+
+                <!-- Email input -->
+                <div class="mb-4 form-outline">
+                    {% render_field form.gstinNo|attr:'required:true' class="form-control" %}
+                    <label class="form-label" for="form6Example5">GSTIN NO</label>
+                </div>
+                <h3>Products Details</h3>
+                <hr>
+
+                <div class="mb-4 row">
+                    <div class="col">
+                        <div class="mb-4 input-group">
+                            <div class="input-group-text">Product Name</div>
+                            {% render_field form.inventory_id class="form-control" %}
+                        </div>
+
+                    </div>
+                    <div class="col">
+
+                        <div class="mb-4 form-outline">
+                            {% render_field form.itemPrice class="form-control" id="itemPrice" %}
+                            <label class="form-label">Product Price</label>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="mb-4 row">
+                    <div class="col">
+
+                        <div class="mb-4 form-outline">
+                            {% render_field form.quantity|attr:'required:true' id="quantity" class="form-control" %}
+                            <label class="form-label">Quantity</label>
+
+                        </div>
+                    </div>
+                    <div class="col">
+
+                        <div class="mb-4 form-outline">
+                            {% render_field form.totalPrice|attr:'readonly:true' id="totalPrice" class="form-control" %}
+                            <label class="form-label" for="form6Example5">Total Price</label>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Submit button -->
+                <button type="submit" class="mb-4 btn btn-primary btn-block">Sale Item</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="{% static 'js/purchase.js' %}"></script>
+
+{% endblock %}
