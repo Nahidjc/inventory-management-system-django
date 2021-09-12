@@ -31,6 +31,7 @@ def itemPurchase(request):
 
 def salesItem(request):
     form = SalesItemForm()
+    error = ''
     if request.method == 'POST':
         form = SalesItemForm(request.POST)
         if form.is_valid():
@@ -43,11 +44,14 @@ def salesItem(request):
                 id=inventoryID)
             PreviousUnits = inv_obj.units
 
-            updatedUnits = int(PreviousUnits) - int(quantity)
-            print("Updated quantity", updatedUnits)
-            # # updated_inventory
-            inventory.objects.filter(
-                id=inventoryID).update(units=updatedUnits)
-            return redirect('home')
+            if int(PreviousUnits) >= int(quantity):
+                updatedUnits = int(PreviousUnits) - int(quantity)
+                print("Updated quantity", updatedUnits)
+                # # updated_inventory
+                inventory.objects.filter(
+                    id=inventoryID).update(units=updatedUnits)
+                return redirect('home')
+            else:
+                error = 'Your inventory stock is lower than sales quantity'
 
-    return render(request, 'transaction/salesItem.html', context={'form': form})
+    return render(request, 'transaction/salesItem.html', context={'form': form, 'error': error})
