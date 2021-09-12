@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from .forms import InventoryForm
+from .forms import InventoryForm, createSupplierForm
 from django.shortcuts import HttpResponseRedirect, redirect
 from django.urls import reverse
 # Create your views here.
@@ -19,3 +19,13 @@ def createInventory(request):
             form.save()
             return redirect('home')
     return render(request, 'inventory/createInventory.html', context={'form': form})
+
+
+def addSupplier(request):
+    form = createSupplierForm()
+    if request.method == 'POST':
+        form = createSupplierForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    return render(request, 'inventory/addSupplier.html', context={'form': form})

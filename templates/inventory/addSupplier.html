@@ -1,0 +1,75 @@
+{% extends "dashboard.html" %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block body_block %}
+
+<div class="container">
+    <div class="row vh-100">
+        <div class="col-md-7 col-sm-8 col-lg-6 m-auto shadow-lg p-5 rounded-5">
+            <h2 class='text-center p-2'>Add Supplier</h2>
+            <form method="POST" class="my-5">
+                {% if error %}
+                <div class="my-2">
+                    <div class="row">
+                        <div class="m-auto col">
+                            <div class="text-center alert alert-danger" role="alert">
+                                {{error}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                <!-- Email input -->
+                {% csrf_token %}
+
+
+                <div class="row mb-4">
+                    <div class="col">
+                        <div class="form-outline">
+                            {% render_field form.first_name|attr:'required:true' type="text" class="form-control" %}
+                            <label class="form-label" for="form6Example1">First name</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-outline">
+                            {% render_field form.last_name|attr:'required:true' type="text" class="form-control" %}
+                            <label class="form-label" for="form6Example2">Last name</label>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-outline mb-4">
+                    {% render_field form.email|attr:'required:true' type="email" class="form-control" %}
+                    <label class="form-label">Email</label>
+                </div>
+
+                <!-- Number input -->
+                <div class="form-outline mb-4">
+                    {% render_field form.phone|attr:'required:true' type="text" class="form-control" %}
+                    <label class="form-label">Phone</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                    {% render_field form.address|attr:'required:true' type="textarea" rows="4" class="form-control" %}
+                    <label class="form-label">Address</label>
+                </div>
+                <!-- Message input -->
+                <div class="form-outline mb-4">
+                    {% render_field form.gstinNo|attr:'required:true' type="text" class="form-control" %}
+                    <label class="form-label" for="form6Example7">GSTIN NO</label>
+                </div>
+
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-block mb-4">Add Supplier</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}
