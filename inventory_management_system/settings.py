@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'django_cleanup.apps.CleanupConfig',
     'bootstrap4',
     'mathfilters'
+    # 'chartjs',
 ]
 
 MIDDLEWARE = [

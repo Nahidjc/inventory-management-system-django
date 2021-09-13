@@ -55,3 +55,10 @@ def salesItem(request):
                 error = 'Your inventory stock is lower than sales quantity'
 
     return render(request, 'transaction/salesItem.html', context={'form': form, 'error': error})
+
+
+def item_dashboard(request):
+    inventoryList = inventory.objects.all()
+    print(inventoryList)
+
+    return render(request, 'itemdashboard.html', context={'inventories': inventoryList})

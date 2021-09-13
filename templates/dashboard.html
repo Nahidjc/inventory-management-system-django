@@ -24,6 +24,8 @@
 
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <title>Admin Dashboard</title>
     {% block block_js %}
 
@@ -49,7 +51,7 @@
                 <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span
                             class="nav_logo-name">{{user.username}} Dashboard</span> </a>
                     <div class="nav_list">
-                        <a href="#" class="nav_link">
+                        <a href="/transaction/item-dashboard" class="nav_link">
                             <i class='bx bx-grid-alt nav_icon'></i>
                             <span class="nav_name">Dashboard</span> </a>
 
