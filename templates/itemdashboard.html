@@ -101,13 +101,21 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="m-auto col-md-5">
+            <a href="/transaction/purchase/">
+                <button type="submit" class="text-white btn btn-info btn-block">New Incomming Stock</button>
+            </a>
 
+        </div>
+        <div class="m-auto col-md-5">
+            <a href="/transaction/salesitem/">
+                <button type="submit" class="btn btn-primary btn-block">New Outgoing Stock</button>
+            </a>
 
-    {% for product in product %}
+        </div>
+    </div>
 
-    <li> {{ product.inventory_id.name }}</li>
-
-    {% endfor %}
 </div>
 
 

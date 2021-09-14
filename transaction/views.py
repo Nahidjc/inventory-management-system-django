@@ -26,7 +26,7 @@ def itemPurchase(request):
             # # updated_inventory
             inventory.objects.filter(
                 id=inventoryID).update(units=updatedUnits)
-            return redirect('home')
+            return redirect('item-dashboard')
 
     return render(request, 'transaction/purchase.html', context={'form': form})
 
@@ -52,7 +52,7 @@ def salesItem(request):
                 # # updated_inventory
                 inventory.objects.filter(
                     id=inventoryID).update(units=updatedUnits)
-                return redirect('home')
+                return redirect('item-dashboard')
             else:
                 error = 'Your inventory stock is lower than sales quantity'
 
