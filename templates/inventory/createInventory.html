@@ -6,8 +6,8 @@
 
 <div class="container">
     <div class="row vh-100">
-        <div class="col-md-5 col-sm-6 col-lg-4 m-auto shadow-lg p-5 rounded-5">
-            <h2 class='text-center p-2'>Admin Login Form</h2>
+        <div class="p-5 m-auto shadow-lg col-md-5 col-sm-6 col-lg-4 rounded-5">
+            <h2 class='p-2 text-center'>Add Product in your inventory</h2>
             <form method="POST" class="my-5">
                 {% if error %}
                 <div class="my-2">
@@ -22,14 +22,14 @@
                 {% endif %}
                 <!-- Email input -->
                 {% csrf_token %}
-                <div class="form-outline mb-4">
+                <div class="mb-4 form-outline">
 
                     {% render_field form.name|attr:'required:true' type='text' class="form-control" %}
                     <label class="form-label">Inventory Name</label>
                 </div>
 
                 <!-- Password input -->
-                <div class="form-outline mb-4">
+                <div class="mb-4 form-outline">
                     {% render_field form.units|attr:'required:true' type="number" class="form-control" %}
                     <label class="form-label">Quantity</label>
                 </div>
