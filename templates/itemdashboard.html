@@ -119,7 +119,7 @@
 
     <div class="p-5 my-5 rounded shadow row">
         <div class="col-md-6">
-            <h3>Most Recent Purchases</h3>
+            <h3>Most Recent Sales</h3>
             <hr>
 
             {% for product in product %}
@@ -134,7 +134,7 @@
                     <p>Total Price: {{ product.totalPrice }} tk</p>
                     <p>Product Quantity: {{ product.quantity}}</p>
                     <p>Product Name: {{ product.inventory_id}}</p>
-                    <a href="#">View Bill</a>
+                    <a href="{% url 'transaction:bill-print' bill_id=product.sale_id %}">View Bill</a>
                 </div>
             </div>
             <hr>
@@ -146,7 +146,7 @@
 
 
         <div class="col-md-6">
-            <h3>Most Recent Sales</h3>
+            <h3>Most Recent Purchases</h3>
             <hr>
 
 

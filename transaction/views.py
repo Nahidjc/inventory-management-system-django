@@ -63,6 +63,7 @@ def item_dashboard(request):
     inventoryList = inventory.objects.all()
     product = SalesItem.objects.all()
     purchaseProducts = PurchaseItem.objects.all()
+    saleProducts = SalesItem.objects.all()
 
     saleProducts = SalesItem.objects.all().values('inventory_id', 'inventory_id__name').order_by(
         'inventory_id').annotate(total_product=Sum('quantity'))
@@ -70,3 +71,11 @@ def item_dashboard(request):
     print(product)
 
     return render(request, 'itemdashboard.html', context={'inventories': inventoryList, 'saleProducts': saleProducts, 'product': product, 'purchaseProducts': purchaseProducts})
+
+
+def bill_print(request, bill_id):
+    print(bill_id)
+
+    billDetails = SalesItem.objects.get(sale_id=bill_id)
+    print(billDetails.totalPrice)
+    return render(request, 'transaction/billprint.html', context={'billDetails': billDetails})
