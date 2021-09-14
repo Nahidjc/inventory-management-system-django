@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .forms import PurchaseItemForm, SalesItemForm
 from inventory.models import inventory
-from transaction.models import SalesItem
+from transaction.models import SalesItem, PurchaseItem
 from django.shortcuts import HttpResponseRedirect, redirect
 from django.db.models import Avg, Count, Min, Sum
 # Create your views here.
@@ -62,9 +62,11 @@ def salesItem(request):
 def item_dashboard(request):
     inventoryList = inventory.objects.all()
     product = SalesItem.objects.all()
+    purchaseProducts = PurchaseItem.objects.all()
+
     saleProducts = SalesItem.objects.all().values('inventory_id', 'inventory_id__name').order_by(
         'inventory_id').annotate(total_product=Sum('quantity'))
 
-    print(saleProducts)
+    print(product)
 
-    return render(request, 'itemdashboard.html', context={'inventories': inventoryList, 'saleProducts': saleProducts, 'product': product})
+    return render(request, 'itemdashboard.html', context={'inventories': inventoryList, 'saleProducts': saleProducts, 'product': product, 'purchaseProducts': purchaseProducts})
