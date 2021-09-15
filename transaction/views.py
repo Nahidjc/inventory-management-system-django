@@ -85,3 +85,8 @@ def purchase_list(request):
     purchaseProducts = PurchaseItem.objects.all()
     print(purchaseProducts)
     return render(request, 'transaction/purchasesList.html', context={'purchaseProducts': purchaseProducts})
+
+
+def sales_item_lists(request):
+    SalesItems = SalesItem.objects.all()
+    return render(request, 'transaction/salesItemsLists.html', context={'SalesItems': SalesItems})
