@@ -11,6 +11,7 @@ def home(request):
     return render(request, 'dashboard.html', {})
 
 
+@login_required
 def createInventory(request):
     form = InventoryForm()
     if request.method == 'POST':
@@ -21,6 +22,7 @@ def createInventory(request):
     return render(request, 'inventory/createInventory.html', context={'form': form})
 
 
+@login_required
 def addSupplier(request):
     form = createSupplierForm()
     if request.method == 'POST':
