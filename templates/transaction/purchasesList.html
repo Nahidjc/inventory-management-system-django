@@ -139,7 +139,9 @@
                         <td data-column="Total Price">{{product.totalPrice}} tk</td>
                         <td data-column="Purchased Date">{{product.date}} </td>
                         <td data-column="Options">
-                            <button class="btn-primary btn">View Bill</button>
+                            <a href="{% url 'transaction:purchase-bill' bill_id=product.bill_id %}"> <button
+                                    class="btn-primary btn">View Bill</button></a>
+
                         </td>
                     </tr>
                     {% endfor %}
