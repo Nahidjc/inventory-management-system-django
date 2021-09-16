@@ -162,7 +162,7 @@
                     <p>Total Price: {{ product.totalPrice }} tk</p>
                     <p>Product Quantity: {{ product.quantity}}</p>
                     <p>Product Name: {{ product.inventoryName}}</p>
-                    <a href="#">View Bill</a>
+                    <a href="{% url 'transaction:purchase-bill' bill_id=product.bill_id %}">View Bill</a>
                 </div>
             </div>
             <hr>

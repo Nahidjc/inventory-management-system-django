@@ -81,6 +81,12 @@ def bill_print(request, bill_id):
     return render(request, 'transaction/billprint.html', context={'billDetails': billDetails})
 
 
+def purchaseBill(request, bill_id):
+    billDetails = PurchaseItem.objects.get(bill_id=bill_id)
+    print(billDetails.bill_id)
+    return render(request, 'transaction/purchaseBillprint.html', context={'billDetails': billDetails})
+
+
 def purchase_list(request):
     purchaseProducts = PurchaseItem.objects.all()
     print(purchaseProducts)

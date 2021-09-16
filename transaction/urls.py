@@ -10,4 +10,5 @@ urlpatterns = [
     path('billprint/<bill_id>/', views.bill_print, name='bill-print'),
     path('purchase-lists/', views.purchase_list, name='purchase-list'),
     path('salesitem-lists/', views.sales_item_lists, name='sales-items-lists'),
+    path('purchase-bill/<bill_id>/', views.purchaseBill, name='purchase-bill'),
 ]
